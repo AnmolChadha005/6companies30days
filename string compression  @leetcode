@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int compress(vector<char>& s) {
+        int i=0;
+        int j=0;
+        int count=0;
+        while(i<s.size()&&j<s.size())
+        {
+            s[i]=s[j];
+            count=0;
+            while(j<s.size()&&s[i]==s[j])
+            {
+                count++;
+                j++;
+            }
+            i++;
+            if(count>1)
+            {
+                string counting=to_string(count);
+                for(int k=0;k<counting.length();k++)
+                {
+                    s[i++]=counting[k];
+                }
+            }
+        }
+        return i;
+    }
+};
